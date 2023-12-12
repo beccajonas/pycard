@@ -1,12 +1,10 @@
-
 from __future__ import annotations
-import ipdb
+
 
 class Card:
     def __init__(self, suit: str, value: int):
        self.suit = suit
        self.value = value 
-    #    self.name = convert_value(value)
 
     def convert_value(self, value):
         card_values = {
@@ -14,9 +12,8 @@ class Card:
             5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine",
             10: "Ten", 11: "Jack", 12: "Queen", 13: "King"
         }
-        self._name = card_values.get(value)
-        if value not in card_values.keys():
-            return self._name
+        self.name = card_values.get(value)
+        
             
     @property
     def suit(self) -> str:
