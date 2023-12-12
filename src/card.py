@@ -22,6 +22,8 @@ class Card:
         self._suit = suit
         
     @property
+    # above: decorator (@) - takes the function below and adds functionality to it - for 
+    # a specific type of method 
     def value(self) -> int:
         return self._value
 

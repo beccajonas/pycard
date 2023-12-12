@@ -22,8 +22,11 @@ class Deck:
                 self.cards.append(Card(suit=s, value=v))
         self.shuffle()
 
-    def shuffle(self) -> None:
-        random.shuffle(self.cards)
+    def shuffle(self):
+        for i in range(len(self.cards) - 1, 0, -1):
+            j = random.randint(0, i)
+            self.cards[i], self.cards[j] = self.cards[j], self.cards[i]
+        
 
     @property
     def has_cards(self) -> bool:

@@ -10,11 +10,21 @@ if __name__ == "__main__":
     rate for each player. 
     '''
 
-    player1 = Player("player 1")
-    player2 = Player("player 2")
+    # ipdb.set_trace()
+    player1_username = input("Player 1, enter username: ")
+    print("Player 1 username is: " + player1_username)
+
+    player1 = Player(player1_username)
+
+    player2_username = input("Player 2, enter username: ")
+    print("Player 2 username is: " + player2_username)
+
+    player2 = Player(player2_username)
+
     deck = Deck()
     game = Game(p1=player1, p2=player2, deck=deck)
     game.play()
+    # calling play on the game object
     for i in range(0,10):
         deck.reset()
         game = Game(player1, player2, deck)

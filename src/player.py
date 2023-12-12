@@ -10,9 +10,12 @@ import traceback
 
 class Player:
     def __init__(self, name: str) -> None:
+        # above: name: str is a TYPEHINT - meaning name should be a string
         self.name = name
         self.hand: list[Card] = []
         self.games: list[Game] = []
+        # above: name, hand, games are all attributes of self
+        # can use dot notation to access 
 
     @property
     def name(self) -> str:
@@ -37,10 +40,20 @@ class Player:
         The win rate is the number of games won divided by the total number of games played
         '''
         games_played: int = len(self.games)
-        won_games: list[Game] = [game for game in self.games if game.winner == self]
-        return len(won_games) / games_played
+
+        won_games = []
+        for game in self.games:
+            if game.winner == self:
+                won_games.append(game)
+
+        game_rate = (len(won_games) / games_played) * 100
+        return f"{round(game_rate, 1)} %"
 
     def play_card(self) -> Card:
         if not self.has_card:
             raise ValueError('cannot play card from empty hand')
         return self.hand.pop()
+
+    def name_input(self):
+        input(self.name)
+        print(self.name)
