@@ -4,22 +4,24 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from game import Game
     from card import Card
+    from hand import Hand
 
 import ipdb
 import traceback
 
 class Player:
     def __init__(self, name: str) -> None:
-        # above: name: str is a TYPEHINT - meaning name should be a string
         self.name = name
-        self.hand: list[Card] = []
+        #! self.hand: list[Card] = []
+        self.hand: Hand = Hand([])
         self.games: list[Game] = []
         # above: name, hand, games are all attributes of self
-        # can use dot notation to access 
 
     @property
     def name(self) -> str:
         return self._name
+    
+    
 
     @name.setter
     def name(self, name) -> None:
@@ -30,9 +32,9 @@ class Player:
             raise ValueError("player's name must have at least one character")
         self._name = name
 
-    @property
-    def has_card(self) -> bool:
-        return len(self.hand) > 0
+    #! @property
+    #! def has_card(self) -> bool:
+    #!    return len(self.hand) > 0
 
     @property
     def win_rate(self) -> float:
@@ -40,7 +42,6 @@ class Player:
         The win rate is the number of games won divided by the total number of games played
         '''
         games_played: int = len(self.games)
-
         won_games = []
         for game in self.games:
             if game.winner == self:
@@ -49,10 +50,10 @@ class Player:
         game_rate = (len(won_games) / games_played) * 100
         return f"{round(game_rate, 1)} %"
 
-    def play_card(self) -> Card:
-        if not self.has_card:
-            raise ValueError('cannot play card from empty hand')
-        return self.hand.pop()
+    #! def play_card(self) -> Card:
+    #!     if not self.has_card:
+    #!         raise ValueError('cannot play card from empty hand')
+    #!     return self.hand.pop()
 
     def name_input(self):
         input(self.name)
