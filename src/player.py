@@ -4,8 +4,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from game import Game
     from card import Card
-    from hand import Hand
-
+    
+from hand import Hand
 import ipdb
 import traceback
 
@@ -13,14 +13,15 @@ class Player:
     def __init__(self, name: str) -> None:
         self.name = name
         #! self.hand: list[Card] = []
-        self.hand: Hand = Hand([])
+        self.hand = Hand()
         self.games: list[Game] = []
-        # above: name, hand, games are all attributes of self
+
+    def add_card_to_hand(self, card):
+        self.hand.card_collection.append(card)
 
     @property
     def name(self) -> str:
         return self._name
-    
     
 
     @name.setter

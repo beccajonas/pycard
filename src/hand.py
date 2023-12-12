@@ -16,4 +16,4 @@ class Hand:
     def play_card(self) -> Card:
         if not self.has_card:
             raise ValueError('cannot play card from empty hand')
-        return self.hand.pop()
+        return self.card_collection.pop()

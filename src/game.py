@@ -29,9 +29,9 @@ class Game:
         assert len(self.deck.cards) == 52, "Deck was not refreshed"
         for i in range(0, len(self.deck.cards)):
             if i % 2 == 0:
-                self.player1.hand.append(self.deck.deal_card())
+                self.player1.add_card_to_hand(self.deck.deal_card())
             else:
-                self.player2.hand.append(self.deck.deal_card())
+                self.player2.add_card_to_hand(self.deck.deal_card())
 
     def play(self) -> None:
         """
@@ -51,11 +51,11 @@ class Game:
         if self.winner == None:
             player1_score: int = 0
             player2_score: int = 0
-            assert len(self.player1.hand) == len(self.player2.hand)
+            assert len(self.player1.hand.card_collection) == len(self.player2.hand.card_collection)
 
-            while self.player1.has_card and self.player2.has_card:
-                player1_card: Card = self.player1.play_card()
-                player2_card: Card = self.player2.play_card()
+            while self.player1.hand.has_card and self.player2.hand.has_card:
+                player1_card: Card = self.player1.hand.play_card()
+                player2_card: Card = self.player2.hand.play_card()
                 if player1_card.beats(player2_card):
                     player1_score += 1
                 elif player2_card.beats(player1_card):

@@ -3,11 +3,21 @@ from __future__ import annotations
 import ipdb
 
 class Card:
-    def __init__(self, suit: str, value: int, name: str):
+    def __init__(self, suit: str, value: int):
        self.suit = suit
        self.value = value 
-       self.name = name
+    #    self.name = convert_value(value)
 
+    def convert_value(self, value):
+        card_values = {
+            1: "Ace", 2: "Two", 3: "Three", 4: "Four",
+            5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine",
+            10: "Ten", 11: "Jack", 12: "Queen", 13: "King"
+        }
+        self._name = card_values.get(value)
+        if value not in card_values.keys():
+            return self._name
+            
     @property
     def suit(self) -> str:
         return self._suit
@@ -36,21 +46,7 @@ class Card:
         if value < 1 or value > 13:
             raise ValueError("card value must be between 1 and 13, inclusive") 
         self._value = value 
-
-    @property
-    def name(self):
-        return self._name
     
-    @name.setter
-    def name(self, name: str):
-        card_values = {
-            "1": "Ace", "2": "Two", "3": "Three", "4": "Four",
-            "5": "Five", "6": "Six", "7": "Seven", "8": "Eight", "9": "Nine",
-            "10": "Ten", "11": "Jack", "12": "Queen", "13": "King"
-        }
-        if name not in card_values.keys():
-            raise ValueError("Not a valid card name")
-        self._name = card_values[name]
 
     def beats(self, card: Card) -> bool:
         '''
