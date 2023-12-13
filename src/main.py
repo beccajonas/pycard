@@ -10,25 +10,38 @@ if __name__ == "__main__":
     rate for each player. 
     '''
 
-    # ipdb.set_trace()
-    player1_username = input("Player 1, enter username: ")
-    print("Player 1 username is: " + player1_username)
+    ask_num_input = input("How many players do you have?: ")
+    ask_num_input ="5"
 
-    player1 = Player(player1_username)
+    num_players = range(int(ask_num_input))
+    
+    list_of_players = []
 
-    player2_username = input("Player 2, enter username: ")
-    print("Player 2 username is: " + player2_username)
+    for i in num_players:   
+        # username = input(f"Player {i + 1}, enter username: ")
+        username = "Becca"
+        player = Player(username)
+        list_of_players.append(player)
+    
 
-    player2 = Player(player2_username)
+    # player1_username = input("Player 1, enter username: ")
+    # print("Player 1 username is: " + player1_username)
+
+    # player1 = Player(player1_username)
+
+    # player2_username = input("Player 2, enter username: ")
+    # print("Player 2 username is: " + player2_username)
+
+    # player2 = Player(player2_username)
 
     deck = Deck()
-    game = Game(p1=player1, p2=player2, deck=deck)
+    game = Game(list_of_players, deck=deck)
     game.play()
     # calling play on the game object
     for i in range(0,10):
         deck.reset()
-        game = Game(player1, player2, deck)
+        game = Game(list_of_players, deck)
         game.play()
-    print(f"{player1.name}'s win rate {player1.win_rate}")
-    print(f"{player2.name}'s win rate {player2.win_rate}")
+    # print(f"{player1.name}'s win rate {player1.win_rate}")
+    # print(f"{player2.name}'s win rate {player2.win_rate}")
 

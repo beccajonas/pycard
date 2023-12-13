@@ -10,7 +10,12 @@ import random
 import ipdb
 
 class Game:
-    def __init__(self, p1: Player, p2: Player, deck: Deck) -> None:
+    def __init__(self, list_of_players: list[Player], deck: Deck) -> None:
+
+        # def set_players(self, list_of_players): 
+        #     for i in self.list_of_players
+        #     self.player = p
+
         self.player1: Player = p1
         self.player2: Player = p2
         self.deck: Deck = deck
@@ -20,18 +25,64 @@ class Game:
         self.player1.games.append(self)
         self.player2.games.append(self)
 
-    def distribute_cards(self) -> None:
+    def distribute_cards(self, num_of_player) -> None:
         """
         count from 0 to n, where n is the length of the number of
         cards in the deck. if the number is even, deal a card to
         player one, else deal a card to player 2
         """
         assert len(self.deck.cards) == 52, "Deck was not refreshed"
+
+        #! 2 Players
         for i in range(0, len(self.deck.cards)):
             if i % 2 == 0:
                 self.player1.add_card_to_hand(self.deck.deal_card())
             else:
                 self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 3 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 4 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 5 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 6 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 7 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
+
+        # #! 8 Players
+        #  for i in range(0, len(self.deck.cards)):
+        #     if i % 2 == 0:
+        #         self.player1.add_card_to_hand(self.deck.deal_card())
+        #     else:
+        #         self.player2.add_card_to_hand(self.deck.deal_card())
 
     def play(self) -> None:
         """
