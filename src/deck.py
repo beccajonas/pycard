@@ -2,11 +2,12 @@ from __future__ import annotations
 import random
 from card import Card
 
-import ipdb
+
 class Deck:
     def __init__(self) -> None:
         self.cards: list[Card] = []
         self.reset()
+
 
     def reset(self) -> None:
         """

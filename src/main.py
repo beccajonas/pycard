@@ -2,7 +2,7 @@
 from game import Game
 from player import Player
 from deck import Deck
-import ipdb
+
 
 if __name__ == "__main__":
     '''
@@ -11,7 +11,6 @@ if __name__ == "__main__":
     '''
 
     ask_num_input = input("How many players do you have?: ")
-    ask_num_input ="5"
 
     num_players = range(int(ask_num_input))
     
@@ -19,9 +18,8 @@ if __name__ == "__main__":
 
     for i in num_players:   
         # username = input(f"Player {i + 1}, enter username: ")
-        username = "Becca"
-        player = Player(username)
-        list_of_players.append(player)
+        username = input("Add username: ")
+        list_of_players.append(username)
     
 
     # player1_username = input("Player 1, enter username: ")
@@ -42,6 +40,7 @@ if __name__ == "__main__":
         deck.reset()
         game = Game(list_of_players, deck)
         game.play()
+        
     # print(f"{player1.name}'s win rate {player1.win_rate}")
     # print(f"{player2.name}'s win rate {player2.win_rate}")
-
+    print(f"Winner is {game.winner.name} {game.winner.win_rate}")

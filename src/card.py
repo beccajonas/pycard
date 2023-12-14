@@ -5,14 +5,15 @@ class Card:
     def __init__(self, suit: str, value: int):
        self.suit = suit
        self.value = value 
+       self.name = self.convert_value()
 
-    def convert_value(self, value):
+    def convert_value(self):
         card_values = {
             1: "Ace", 2: "Two", 3: "Three", 4: "Four",
             5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine",
             10: "Ten", 11: "Jack", 12: "Queen", 13: "King"
         }
-        self.name = card_values.get(value)
+        return card_values.get(self.value)
         
             
     @property

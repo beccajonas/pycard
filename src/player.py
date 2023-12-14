@@ -6,8 +6,6 @@ if TYPE_CHECKING:
     from card import Card
     
 from hand import Hand
-import ipdb
-import traceback
 
 class Player:
     def __init__(self, name: str) -> None:
